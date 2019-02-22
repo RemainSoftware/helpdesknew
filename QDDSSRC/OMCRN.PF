@@ -1,0 +1,56 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCRN                                         *
+      * Function ...: Customer Renames                              *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains all pending and finished Rename-         *
+      * actions on Customers                                        *
+      *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMOPHR
+      * ------------------------------------------------------------ *
+                R OMCRNR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  RNCUSC    R               REFFLD(CUSC)
+                                            TEXT('Current Customer Code')
+                  RNNCUS    R               REFFLD(CUSC)
+                                            TEXT('New Customer Code')
+                  RNNNAM    R               REFFLD(NAMD)
+                                            TEXT('New Name')
+                  RNUSID    R               TEXT('Renamed by')
+                                            REFFLD(USID)
+                  RNDATE    R               TEXT('Date renamed')
+                                            REFFLD(DATE)
+                  RNTIME    R               TEXT('Time renamed')
+                                            REFFLD(TIME)
+                  RNCOMP    R               REFFLD(INDI)
+                                            TEXT('Rename Completed? 0=No 1=Yes')

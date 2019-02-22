@@ -1,0 +1,54 @@
+ /* ---------------------------------------------------------------- */
+ /*  Copyright (c) 2019 Remain BV (https://remainsoftware.com)       */
+ /*                                                                  */
+ /*  This program and the accompanying materials are made            */
+ /*  available under the terms of the Eclipse Public License 2.0     */
+ /*  which accompanies this distribution, and is available at        */
+ /*  https://www.eclipse.org/legal/epl-2.0/                          */
+ /*                                                                  */
+ /*  SPDX-License-Identifier: EPL-2.0                                */
+ /*                                                                  */
+ /*  Contributors:                                                   */
+ /*      Remain Software - initial API and implementation            */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMX047C                                            */
+ /* Function ...: Send Status Message to Screen                      */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: &MSGID   - Message Id                              */
+ /*               &MSGF    - Message File                            */
+ /*               &MSGFLIB - Message File Library                    */
+ /*               &MSGDTA  - Message Data                            */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&MSGID &MSGF &MSGFLIB &MSGDTA)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&MSGID) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&MSGF) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGFLIB) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGDTA) TYPE(*CHAR) LEN(512)
+
+          /* ------------------------------------------------------- */
+          /* Install the error monitor                               */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ENDPGM))
+
+             SNDPGMMSG  MSGID(&MSGID) MSGF(&MSGFLIB/&MSGF) +
+                          MSGDTA(&MSGDTA) TOPGMQ(*EXT) MSGTYPE(*STATUS)
+
+ /* ---------------------------------------------------------------- */
+ /* End of program                                                   */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RETURN
+             ENDPGM

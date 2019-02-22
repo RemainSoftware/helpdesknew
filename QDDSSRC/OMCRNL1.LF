@@ -1,0 +1,37 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCRNL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Customer renames logical                      *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMCRNL                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+     A          R OMCRNR                    PFILE(OMCRN)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * RNCUSC      - Customer Code                                 *
+      * ----------------------------------------------------------- *
+     A          K RNCUSC

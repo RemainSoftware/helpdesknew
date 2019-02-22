@@ -1,0 +1,45 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMANS                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: HelpDesk answers                              *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the HelpDesk answers                     *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMANSR
+      * ------------------------------------------------------------ *
+                R OMANSR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  NSHEDC    R               REFFLD(HEDC)
+                  NSQUE#    R               REFFLD(QUE#)
+                  NSANS#    R               REFFLD(ANS#)
+                  NSANSC    R               REFFLD(ANSC)

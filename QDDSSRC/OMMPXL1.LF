@@ -1,0 +1,37 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMMPXL1                                       *
+      * Function ...: Helpdesk mail extensions maintenance          *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Record OMMPXR
+      * ------------------------------------------------------------ *
+                R OMMPXR                    PFILE(OMMPX)
+
+      * ------------------------------------------------------------ *
+      * Access path
+      * PXCUSC      - Customer code
+      * PXCCTC      - Contact code
+      * ------------------------------------------------------------ *
+                K PXCUSC
+                K PXCCTC

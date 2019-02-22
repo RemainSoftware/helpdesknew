@@ -1,0 +1,50 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHIL                                         *
+      * Function ...: HelpDesk incident log                         *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file holds the log for an incident.                    *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMHILR
+      * ------------------------------------------------------------ *
+                R OMHILR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  ILHEDC    R               REFFLD(HEDC)
+                  ILINC#    R               REFFLD(INC#)
+                  ILACTC    R               REFFLD(ACTC)
+                  ILINDT    R               REFFLD(INDT)
+                  ILINTM    R               REFFLD(INTM)
+                  ILMSID    R               REFFLD(MSID)
+                  ILMSGF    R               REFFLD(MSGF)
+                  ILMSGD    R               REFFLD(MSGD)
+                  ILUSID    R               REFFLD(USID)

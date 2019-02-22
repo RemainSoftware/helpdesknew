@@ -1,0 +1,52 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMEPR                                         *
+      * Function ...: Escalation                                    *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This is the escalation property file                        *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMEPRR
+      * ------------------------------------------------------------ *
+                R OMEPRR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  PRHEDC    R               REFFLD(HEDC)
+                  PRJOBD    R               REFFLD(JBD)
+                  PRJBDL    R               REFFLD(JBDL)
+                  PRESF#    R               REFFLD(ESF#)
+                  PRSAMI    R               REFFLD(SAMI)
+                  PRJOB#    R               REFFLD(JOB#)
+                  PRJOBN    R               REFFLD(JOBN)
+                  PRUSID    R               REFFLD(USID)
+                  PRDOWA    R               REFFLD(DOWA)
+                  PRSPTM    R               REFFLD(SPTM)
+                  PREPTM    R               REFFLD(EPTM)

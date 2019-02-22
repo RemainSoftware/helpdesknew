@@ -1,0 +1,44 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMQLQL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Question list question                        *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * Modification: 3-10-1996, Jan de Zeeuw: remove question      *
+      *                          number from key                    *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMQLQR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMQLQR                    PFILE(OMQLQ)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * LQHEDC      - Helpdesk code                                 *
+      * LQQLS#      - Question list number                          *
+      * LQQSQ#      - Question sequence in question list            *
+      * ----------------------------------------------------------- *
+                K LQHEDC
+                K LQQLS#
+                K LQQSQ#

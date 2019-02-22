@@ -1,0 +1,50 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMINC                                         *
+      * Module .....: Incident text headers                         *
+      * Module .....: HelpDesk                                      *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the incident text headers                *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMTIHR
+      * ------------------------------------------------------------ *
+                R OMTIHR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  IHHEDC    R               REFFLD(HEDC)
+                  IHINC#    R               REFFLD(INC#)
+                  IHITH#    R               REFFLD(ITH#)
+                  IHITXT    R               REFFLD(ITXT)
+                  IHINDT    R               REFFLD(INDT)
+                  IHINTM    R               REFFLD(INTM)
+                  IHSUL#    R               REFFLD(SUL#)
+                  IHUSID    R               REFFLD(USID)
+                  IHSITD    R               REFFLD(SITD)

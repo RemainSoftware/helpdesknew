@@ -1,0 +1,48 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSAF                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status actions                                *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the HelpDesk status                      *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMSAFR
+      * ------------------------------------------------------------ *
+                R OMSAFR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  AFHEDC    R               REFFLD(HEDC)
+                  AFSTAT    R               REFFLD(STAT)
+                  AFASQ#    R               REFFLD(ASQ#)
+                  AFEOEI    R               REFFLD(EOEI)
+                  AFSEPG    R               REFFLD(SEPG)
+                  AFSEPL    R               REFFLD(SEPL)
+                  AFINTL    R               REFFLD(INTL)

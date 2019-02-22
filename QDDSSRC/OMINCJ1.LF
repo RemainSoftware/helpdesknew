@@ -1,0 +1,82 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMINCJ1                                       *
+      * Function ...: Incidents join customer calls - on incident   *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This is a join logical over the incidents file and the      *
+      * customer calls file                                         *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record format specification                                 *
+      * ----------------------------------------------------------- *
+                R OMINCR                    JFILE(OMINC OMCCA)
+
+      * ----------------------------------------------------------- *
+      * Join specification                                          *
+      * ----------------------------------------------------------- *
+                J                           JOIN(OMINC OMCCA)
+                                            JFLD(NCHEDC CAHEDC)
+                                            JFLD(NCCTN# CACTN#)
+
+      * ----------------------------------------------------------- *
+      * Fields in access path                                       *
+      * ----------------------------------------------------------- *
+                  NCHEDC
+                  NCINC#
+                  NCCTN#
+                  NCAIN#
+                  NCINDT
+                  NCINTM
+                  NCRCDT
+                  NCRCTM
+                  NCSTRC
+                  NCRES#
+                  NCSUL#
+                  NCSTAT
+                  NCSRDT
+                  NCSRTM
+                  NCSEV1
+                  NCSEV2
+                  NCSEV3
+                  NCPRI#
+                  NCESC#
+                  NCIEDT
+                  NCIETM
+                  NCRUID
+                  NCAUID
+                  NCITPC
+                  NCCFL#
+                  NCCFIC
+                  NCUSF1
+                  NCUSF2
+                  NCUSF3
+                  NCSHID
+                  CACUSC
+                  CACCTC
+
+      * ----------------------------------------------------------- *
+      * Key fields                                                  *
+      * ----------------------------------------------------------- *
+                K NCHEDC
+                K NCINC#                    DESCEND
+

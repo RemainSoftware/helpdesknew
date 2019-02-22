@@ -1,0 +1,19 @@
+pgm parm(&srcf &srcl &mbrc)
+dcl &srcf *char 10
+dcl &srcl *char 10
+dcl &mbrc  *char 10
+dltf qtemp/inslic
+monmsg cpf0000
+
+             CPYF       FROMFILE(&SRCL/&SRCF) TOFILE(QTEMP/INSLIC) +
+                          FROMMBR(INSERT) TOMBR(&MBRC) MBROPT(*ADD) +
+                          CRTFILE(*YES)
+
+             CPYF       FROMFILE(&SRCL/&SRCF) TOFILE(QTEMP/INSLIC) +
+                          FROMMBR(&MBRC) TOMBR(&MBRC) MBROPT(*ADD) +
+                          CRTFILE(*YES)
+
+             CPYF       FROMFILE(QTEMP/INSLIC) TOFILE(&SRCL/&SRCF) +
+                          FROMMBR(&MBRC) TOMBR(&MBRC) +
+                          MBROPT(*REPLACE) CRTFILE(*NO)
+                          endpgm

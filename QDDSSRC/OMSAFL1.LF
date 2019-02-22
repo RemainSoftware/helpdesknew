@@ -1,0 +1,43 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSAFL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status actions logical                        *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMSAFR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMSAFR                    PFILE(OMSAF)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * AFHEDC      - Helpdesk code                                 *
+      * AFSTAT      - Status                                        *
+      * AFEOEI      - Entry or exit indicator                       *
+      * AFASQ#      - Status action sequence                        *
+      * ----------------------------------------------------------- *
+                K AFHEDC
+                K AFSTAT
+                K AFEOEI
+                K AFASQ#

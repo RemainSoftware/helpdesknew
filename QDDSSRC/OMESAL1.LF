@@ -1,0 +1,42 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMESAL1                                       *
+      * Function ...: Employee status route access logical          *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * File level keywords
+      * ------------------------------------------------------------ *
+                                            UNIQUE
+
+      * ------------------------------------------------------------ *
+      * Record OMESAR
+      * ------------------------------------------------------------ *
+                R OMESAR                    PFILE(OMESA)
+
+      * ------------------------------------------------------------ *
+      * Key fields: helpdesk, employee, status route
+      * ------------------------------------------------------------ *
+                K SAHEDC
+                K SAEMPC
+                K SASTRC
+

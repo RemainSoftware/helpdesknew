@@ -1,0 +1,45 @@
+      * ----------------------------------------------------------- *
+      * Copyright (c) 2019 Remain Software
+      *
+      * This program and the accompanying materials are made
+      * available under the terms of the Eclipse Public License 2.0
+      * which accompanies this distribution, and is available at
+      * https://www.eclipse.org/legal/epl-2.0/
+      *
+      * SPDX-License-Identifier: EPL-2.0
+      *
+      * Contributors:
+      *     Remain Software - initial API and implementation
+      * ----------------------------------------------------------- *
+
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMQLAL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Question list questions, answers and actions  *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMHQLR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMQLAR                    PFILE(OMQLA)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * LAHEDC      - Helpdesk code                                 *
+      * LAQLS#      - Question list                                 *
+      * LASEQ#      - Sequence number                               *
+      * LAQUE#      - Question                                      *
+      * LAANS#      - Answer                                        *
+      * ----------------------------------------------------------- *
+                K LAHEDC
+                K LAQLS#
+                K LAQSQ#
+                K LAQUE#
+                K LAANS#
