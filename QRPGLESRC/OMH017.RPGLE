@@ -29,6 +29,7 @@
       * Parameters .: P#HEDC, P#STAT                                *
       *                                                             *
       * This program maintains the incoming calls                   *
+      * Fix the printing of the customer calls                      *
       *                                                             *
       * ----------------------------------------------------------- *
       /EJECT
