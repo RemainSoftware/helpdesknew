@@ -27,6 +27,7 @@
      A                                      ALTHELP(CA01)
      A          R OMH01701                  SFL
      A*%%TS  SD  19970507  135548  WIM         REL-V3R1M0  5763-PW1
+     A* major change
      A                                      TEXT('Work with calls')
      A  93                                  SFLNXTCHG
      A            FMOPT1         2A  B 11  2TEXT('Option field')
