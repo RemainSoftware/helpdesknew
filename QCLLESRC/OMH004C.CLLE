@@ -41,6 +41,7 @@
           /* ------------------------------------------------------- */
              DCL        VAR(&HEDD)    TYPE(*CHAR) LEN(50)
              DCL        VAR(&STAT)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&STXT)    TYPE(*CHAR) LEN(5)
 
           /* ------------------------------------------------------- */
           /* Monitor for unexpected errors.                          */
