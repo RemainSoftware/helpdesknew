@@ -26,7 +26,7 @@
      A                                      PRINT(*LIBL/QSYSPRT)
      A                                      ALTHELP(CA01)
      A          R OMH01101                  SFL
-     A*%%TS  SD  19970213  105531  JAN         REL-V3R1M0  5763-PW1
+     A*%%TS  SD  19970213  105531  JAN         REL-V3R1M0  5763-PW1   xx
      A                                      TEXT('Work with customers')
      A  93                                  SFLNXTCHG
      A            FMOPT1         2A  B 10  2TEXT('Option field')
