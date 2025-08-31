@@ -1,0 +1,211 @@
+.* ----------------------------------------------------------------
+.*  The MIT License (MIT)
+.*
+.*  Copyright (c) 2019 Remain BV (https://remainsoftware.com)
+.*
+.*  Permission is hereby granted, free of charge, to any person
+.*  obtaining a copy of this software and associated
+.*  documentation files (the "Software"), to deal in the
+.*  Software without restriction, including without limitation
+.*  the rights to use, copy, modify, merge, publish, distribute,
+.*  sublicense, and/or sell copies of the Software, and to
+.*  permit persons to whom the Software is furnished to do so,
+.*  subject to the following conditions:
+.*
+.*  The above copyright notice and this permission notice shall
+.*  be included in all copies or substantial portions of the
+.*  Software.
+.*
+.*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+.*  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+.*  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+.*  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+.*  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+.*  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+.*  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+.*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+.*
+.*  Contributors:
+.*      Remain Software - initial API and implementation
+.*
+.* ----------------------------------------------------------------
+
+
+
+.*    *$$\CRTOM CRTMNU                                               *.
+.*    *$$ TYPE(*UIM)                                                 *.
+.*    *$$ REPLACE(*YES)                                              *.
+.*    *$$\ENDOM                                                      *.
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMHESC                                      :   *.
+.*   : Function ...: Helpdesk escalation menu                    :   *.
+.*   : Author .....: Jan de Zeeuw                                :   *.
+.*   : Startdate ..: 3-2-1997                                    :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   �������������������������������������������������������������
+.*   Panel group
+.*   �������������������������������������������������������������
+
+:PNLGRP   SCHIDX=REMAINHD
+          DFTMSGF=OMSDSP
+          SUBMSGF=OMSDSP.
+
+.*        ��������������������������������������������������
+.*        Copyright Remain
+.*        ��������������������������������������������������
+:COPYR.&MSG(CPY0008,OMSMSG).
+
+.*   �������������������������������������������������������������
+.*   Import definitions
+.*   �������������������������������������������������������������
+
+.*        ��������������������������������������������������
+.*        Help for this panelgroup.
+.*        ��������������������������������������������������
+:IMPORT   NAME='*'
+          PNLGRP=OMHESC.
+
+.*   �������������������������������������������������������������
+.*   Variables
+.*   �������������������������������������������������������������
+
+.*        ��������������������������������������������������
+.*        ZMENU
+.*        ��������������������������������������������������
+:VAR      NAME=ZMENU.
+
+.*   �������������������������������������������������������������
+.*   Conditions
+.*   �������������������������������������������������������������
+
+.*   �������������������������������������������������������������
+.*   Function keys
+.*   �������������������������������������������������������������
+:KEYL     NAME=KL0101
+          HELP=KL0101H.
+
+:KEYI     KEY=F1
+          HELP=F1H
+          ACTION=HELP.
+
+:KEYI     KEY=F3
+          HELP=F3H
+          ACTION='EXIT SET'
+          VARUPD=NO.&MSG(KEYF301).
+
+:KEYI     KEY=F4
+          HELP=F4H
+          ACTION='PROMPT'
+          VARUPD=NO.&MSG(KEYF401).
+
+:KEYI     KEY=F9
+          HELP=F9H
+          ACTION=RETRIEVE.&MSG(KEYF901).
+
+:KEYI     KEY=F12
+          HELP=F12H
+          ACTION='CANCEL SET'
+          VARUPD=NO.&MSG(KEYF121).
+
+:KEYI     KEY=F13
+          HELP=F13H
+          ACTION='MENU SUPPORT'.&MSG(KEYF131).
+
+:KEYI     KEY=F24
+          HELP=F24H
+          ACTION=MOREKEYS.&MSG(KEYF241).
+
+:KEYI     KEY=PAGEUP
+          HELP=PAGEH
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP=PAGEH
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=ENTER
+          HELP=ENTERH
+          ACTION=ENTER.
+
+:KEYI     KEY=HOME
+          HELP=HOMEH
+          ACTION=HOME.
+
+:KEYI     KEY=HELP
+          HELP=HELPH
+          ACTION=HELP.
+
+:KEYI     KEY=PRINT
+          HELP=PRINTH
+          ACTION=PRINT.
+:EKEYL.
+
+.*   �������������������������������������������������������������
+.*   Panel 1
+.*   �������������������������������������������������������������
+:PANEL    NAME=PA01
+          KEYL=KL0101
+          HELP=OMHESCH
+          ENTER='MSG CPD9817 QCPFMSG'
+          PANELID=ZMENU
+          TOPSEP=SYSNAM.&MSG(MNU1700).
+
+
+.*        ��������������������������������������������������
+.*        Menu area
+.*        ��������������������������������������������������
+:MENU     DEPTH='*'
+          SCROLL=NO
+          BOTSEP=NONE.
+
+.*        ��������������������������������������������������
+.*        Top instructions
+.*        ��������������������������������������������������
+:TOPINST.&MSG(TIN0006).
+
+.*        ��������������������������������������������������
+.*        Menu options
+.*        ��������������������������������������������������
+
+:MENUI    OPTION=1
+          HELP='OMHESC/OPT1H'
+          ACTION='CMD ? STRESC'.&MSG(MNU1701).
+
+:MENUI    OPTION=2
+          HELP='OMHESC/OPT2H'
+          ACTION='CMD ? ENDESC'.&MSG(MNU1702).
+
+:MENUI    OPTION=4
+          HELP='OMHESC/OPT4H'
+          ACTION='CMD STRESM'.&MSG(MNU1410).
+
+:MENUI    OPTION=5
+          HELP='OMHESC/OPT5H'
+          ACTION='CMD STREPM'.&MSG(MNU1411).
+
+:EMENU.
+
+.*        ��������������������������������������������������
+.*        Command line
+.*        ��������������������������������������������������
+:CMDLINE  SIZE=LONG.&MSG(CMD0003).
+
+:EPANEL.
+
+.*   �������������������������������������������������������������
+.*   Help text for this menu.
+.*   �������������������������������������������������������������
+
+:HELP NAME='OMHESCH'.HelpDesk Escalation - Help
+:XH3.HelpDesk Escalation
+:P.
+The OMS HelpDesk escalation menu allows you to start the
+escalation functions.
+:EHELP.
+:EPNLGRP.

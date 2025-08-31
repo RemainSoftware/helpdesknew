@@ -1,0 +1,97 @@
+.* ----------------------------------------------------------------
+.*  The MIT License (MIT)
+.*
+.*  Copyright (c) 2019 Remain BV (https://remainsoftware.com)
+.*
+.*  Permission is hereby granted, free of charge, to any person
+.*  obtaining a copy of this software and associated
+.*  documentation files (the "Software"), to deal in the
+.*  Software without restriction, including without limitation
+.*  the rights to use, copy, modify, merge, publish, distribute,
+.*  sublicense, and/or sell copies of the Software, and to
+.*  permit persons to whom the Software is furnished to do so,
+.*  subject to the following conditions:
+.*
+.*  The above copyright notice and this permission notice shall
+.*  be included in all copies or substantial portions of the
+.*  Software.
+.*
+.*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+.*  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+.*  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+.*  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+.*  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+.*  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+.*  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+.*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+.*
+.*  Contributors:
+.*      Remain Software - initial API and implementation
+.*
+.* ----------------------------------------------------------------
+
+
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: ENDESC                                      :   *.
+.*   : Help for ...: End escalation                              :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : End Escalation                                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * End escalation                                            *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=ENDESC.Escalation end - Help
+
+:IMHELP NAME=ENDESCGEN.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Escalation end                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=ENDESCGEN.Escalation end - Help
+:XH3.Escalation end
+:ISCH ROOTS='Escalation end'.
+Escalation end
+
+:P.
+The End Escalation Command is used to end the escalation. This process
+is described below.
+
+:P.
+You can stop the escalation jobs by using the option 2 of the
+HelpDesk Escalation Menu, by using the ENDESC (End Escalation)
+command, or by one of the following commands: ENDJOB, ENDSBS,
+ENDSYS or PWRDWNSYS, in all cases with the *CNTRLD option and a
+delay time of at least 30 seconds. The batchjob that activates
+the escalation jobs checks every 15 seconds whether an end request
+has been made, also during processing, and, if so, the escalation
+jobs are ending in a controlled way.
+
+:P.
+If you want to use the escalation function of the HelpDesk, it is
+recommended to schedule the batchjob as well as the ENDESC function
+in your systems starting and closing procedures.
+
+:P.
+If you want more information about escalation in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts.
+:ELINK.
+:EHELP.
+
+:EPNLGRP.

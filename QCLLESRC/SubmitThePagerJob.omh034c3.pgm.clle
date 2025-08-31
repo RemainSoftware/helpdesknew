@@ -1,0 +1,109 @@
+ /* ---------------------------------------------------------------- */
+ /*  The MIT License (MIT)                                           */
+ /*                                                                  */
+ /*  Copyright (c) 2019 Remain (https://remainsoftware.com)          */
+ /*                                                                  */
+ /*  Permission is hereby granted, free of charge, to any person     */
+ /*  obtaining a copy of this software and associated documentation  */
+ /*  files (the "Software"), to deal in the Software without         */
+ /*  restriction, including without limitation the rights to use,    */
+ /*  copy, modify, merge, publish, distribute, sublicense, and/or    */
+ /*  sell copies of the Software, and to permit persons to whom      */
+ /*  the Software is furnished to do so, subject to the following    */
+ /*  conditions:                                                     */
+ /*                                                                  */
+ /*  The above copyright notice and this permission notice shall     */
+ /*  be included in all copies or substantial portions of the        */
+ /*  Software.                                                       */
+ /*                                                                  */
+ /*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY       */
+ /*  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE      */
+ /*  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR         */
+ /*  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS      */
+ /*  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR        */
+ /*  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR      */
+ /*  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE       */
+ /*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.          */
+ /*                                                                  */
+ /*  Contributors:                                                   */
+ /*      Remain Software - initial API and implementation            */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH034C3                                           */
+ /* Function ...: Submit the pager job                               */
+ /* Author .....: Remain Software                                    */
+ /*                                                                  */
+ /* This program submits the pager job                               */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&HEDC &INC# &CTN# &EOEI &STAO &STRO +
+                          &UL1# &STAN &STRN &UL2# &ACTC)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&HEDC)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&INC#)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CTN#)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&EOEI)    TYPE(*CHAR) LEN(1)
+             DCL        VAR(&STAO)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&STRO)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&UL1#)    TYPE(*CHAR) LEN(1)
+             DCL        VAR(&STAN)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&STRN)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&UL2#)    TYPE(*CHAR) LEN(1)
+             DCL        VAR(&ACTC)    TYPE(*CHAR) LEN(2)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare other variables                                          */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&STAT)    TYPE(*CHAR) LEN(5)
+
+ /* ---------------------------------------------------------------- */
+ /* Install global error monitor                                     */
+ /* ---------------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Assume normal ending                                             */
+ /* ---------------------------------------------------------------- */
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+
+ /* ---------------------------------------------------------------- */
+ /* Set library list                                                 */
+ /* ---------------------------------------------------------------- */
+             ADDLIBLE   LIB(PAGER400) POSITION(*LAST)
+             MONMSG     MSGID(CPF2103)
+
+ /* ---------------------------------------------------------------- */
+ /* Submit                                                           */
+ /* ---------------------------------------------------------------- */
+             SBMJOB     CMD(CALL PGM(OMH034) PARM(&HEDC &INC# &CTN# +
+                          &EOEI &STAO &STRO &UL1# &STAN &STRN +
+                          &UL2# &ACTC))
+
+ /* ---------------------------------------------------------------- */
+ /* Goto end of program                                              */
+ /* ---------------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:      CHGVAR     VAR(&STAT) VALUE('*TERM')
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing                                          */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:     RMVMSG     CLEAR(*ALL)
+
+             RETURN
+
+             ENDPGM
+

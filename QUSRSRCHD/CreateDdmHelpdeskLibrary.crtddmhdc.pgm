@@ -1,0 +1,118 @@
+ /* ---------------------------------------------------------------- */
+ /*  The MIT License (MIT)                                           */
+ /*                                                                  */
+ /*  Copyright (c) 2019 Remain (https://remainsoftware.com)          */
+ /*                                                                  */
+ /*  Permission is hereby granted, free of charge, to any person     */
+ /*  obtaining a copy of this software and associated documentation  */
+ /*  files (the "Software"), to deal in the Software without         */
+ /*  restriction, including without limitation the rights to use,    */
+ /*  copy, modify, merge, publish, distribute, sublicense, and/or    */
+ /*  sell copies of the Software, and to permit persons to whom      */
+ /*  the Software is furnished to do so, subject to the following    */
+ /*  conditions:                                                     */
+ /*                                                                  */
+ /*  The above copyright notice and this permission notice shall     */
+ /*  be included in all copies or substantial portions of the        */
+ /*  Software.                                                       */
+ /*                                                                  */
+ /*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY       */
+ /*  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE      */
+ /*  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR         */
+ /*  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS      */
+ /*  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR        */
+ /*  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR      */
+ /*  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE       */
+ /*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.          */
+ /*                                                                  */
+ /*  Contributors:                                                   */
+ /*      Remain Software - initial API and implementation            */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+
+ /*   *$$\CRTOM CRTCLPGM    */
+ /*   *$$ ALWRTVSRC(*NO)    */
+ /*   *$$ TGTRLS(V5R2M0)    */
+ /*   *$$ REPLACE(*YES)     */
+ /*   *$$\ENDOM             */
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: CRTDDMHDC                                          */
+ /* Function ...: Create DDM HelpDesk library                        */
+ /* Author .....: Remain B.V.                                        */
+ /* Startdate ..: ............                                       */
+ /* Parameters .: &HDOL, HelpDesk object library      (INPUT)        */
+ /*               &HDSL, HelpDesk save library        (INPUT)        */
+ /*               &RMTL, Remote location.             (INPUT)        */
+ /*                                                                  */
+ /* This procedure is the CRTDDMHD command processor.                */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Initialization                                                   */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Program start                                           */
+          /* ------------------------------------------------------- */
+             PGM        PARM(&HDOL &HDSL &RMTL)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameters                                      */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&HDOL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&HDSL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&RMTL) TYPE(*CHAR) LEN(8)
+
+          /* ------------------------------------------------------- */
+          /* Outfile declaration                                     */
+          /* ------------------------------------------------------- */
+             DCLF       FILE(CRTDDMHD)
+
+ /* ---------------------------------------------------------------- */
+ /* Test if the HelpDesk library exists                              */
+ /* ---------------------------------------------------------------- */
+             CHKOBJ     OBJ(&HDOL/OMHDD) OBJTYPE(*FILE)
+
+ /* ---------------------------------------------------------------- */
+ /* Test if the SaveLibrary exists                                   */
+ /* ---------------------------------------------------------------- */
+             CHKOBJ     OBJ(QSYS/&HDSL) OBJTYPE(*LIB)
+
+ /* ---------------------------------------------------------------- */
+ /* Create outfile with files.                                       */
+ /* ---------------------------------------------------------------- */
+             DSPFD      FILE(&HDOL/*ALL) TYPE(*BASATR) +
+                          OUTPUT(*OUTFILE) FILEATR(*PF *LF) +
+                          OUTFILE(QTEMP/CRTDDMHD)
+
+ /* ---------------------------------------------------------------- */
+ /* Override                                                         */
+ /* ---------------------------------------------------------------- */
+             OVRDBF     FILE(CRTDDMHD) TOFILE(QTEMP/CRTDDMHD) +
+                          SHARE(*YES)
+
+ /* ---------------------------------------------------------------- */
+ /* Read loop                                                        */
+ /* ---------------------------------------------------------------- */
+ LOOP:
+             RCVF
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ENDPGM))
+
+             MOVOBJ     OBJ(&ATLIB/&ATFILE) OBJTYPE(*FILE) TOLIB(&HDSL)
+
+             CRTDDMF    FILE(&HDOL/&ATFILE) RMTFILE(&HDOL/&ATFILE) +
+                          RMTLOCNAME(&RMTL) TEXT(&ATTXT)
+
+             GOTO       CMDLBL(LOOP)
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing                                          */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RETURN
+             ENDPGM
