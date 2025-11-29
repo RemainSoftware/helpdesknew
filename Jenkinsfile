@@ -1,10 +1,11 @@
 pipeline {
   agent any
-  echo params.ENV
   stages {
     stage('Process changed files') {
       steps {
         script {
+
+          echo params.ENV
           // Make sure we have the latest master branch locally
           sh "git fetch origin ${BASE_BRANCH}"
 
