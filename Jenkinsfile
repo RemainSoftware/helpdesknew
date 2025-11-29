@@ -5,18 +5,17 @@ pipeline {
       steps {
         script {
 
-          echo params.ENV
           // Make sure we have the latest master branch locally
-          sh "git fetch origin ${BASE_BRANCH}"
+          sh "git fetch origin master"
 
           // Get changed files between origin/master and current HEAD
           def diffOutput = sh(
-            script: "git diff --name-only origin/${BASE_BRANCH}...HEAD",
+            script: "git diff --name-only origin/master...HEAD",
             returnStdout: true
           ).trim()
 
           if (!diffOutput) {
-            echo "No changed files compared to origin/${BASE_BRANCH}."
+            echo "No changed files compared to origin/master."
             return
           }
 
