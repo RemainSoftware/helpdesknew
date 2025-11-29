@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  echo params.ENV
   stages {
     stage('Process changed files') {
       steps {
