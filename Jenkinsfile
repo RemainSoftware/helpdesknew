@@ -28,6 +28,9 @@ pipeline {
           changedFiles.each { file ->
             echo "Processing file: ${file}"
             onIBMi('Plato') {
+              ibmiCommand "chgenv omsxmp"
+              ibmiCommand "addlible V18T0083"
+              ibmiCommand "addlible V18T0083"
               ibmiCommand "SNDMSG MSG('${file}') TOUSR(WIM)"
             }
           }

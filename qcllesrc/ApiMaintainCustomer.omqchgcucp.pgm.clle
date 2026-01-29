@@ -73,7 +73,7 @@
              DCL        VAR(&BUF)  TYPE(*CHAR) LEN(1024)
              DCL        VAR(&PRC)  TYPE(*CHAR) LEN(40)
              DCL        VAR(&ERR)  TYPE(*CHAR) LEN(136)
-             DCL        VAR(&FLD)  TYPE(*CHAR) LEN(130)
+             DCL        VAR(&FLD)  TYPE(*CHAR) LEN(130) 
 
              DCL        VAR(&USF31) TYPE(*CHAR) LEN(8) +
                           VALUE(X'000000000000001D')
