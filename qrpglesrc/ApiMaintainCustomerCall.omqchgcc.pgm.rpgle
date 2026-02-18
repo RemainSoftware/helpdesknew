@@ -507,6 +507,7 @@
       *          ------------------------------------------
      C                   MOVE      C4HEDC        K#HEDC
      C                   MOVE      C4CTN#        K#CTN#
+     C                   MOVE      C4CTN#        K#CTN#
      C     $CA1K1        CHAIN     OMCCAL1
      C                   EVAL      *IN99 = NOT %FOUND
       *

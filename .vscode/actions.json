@@ -1,7 +1,7 @@
 [
-    {
+  {
     "name": "TD/OMS",
-    "command": "BLDIFSOMS BRANCH('&BRANCH') FILE('&FULLPATH') DIR('&FILEDIR')",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&FULLPATH')",
     "deployFirst": true,
     "environment": "ile",
     "extensions": [
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "name": "Create RPGLE ss Program",
+    "name": "Create RPGLE Program",
     "command": "CRTBNDRPG PGM(&CURLIB/&NAME) SRCSTMF('&RELATIVEPATH') OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTCCSID(*JOB)",
     "deployFirst": true,
     "environment": "ile",
