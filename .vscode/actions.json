@@ -1,6 +1,6 @@
 [
   {
-    "name": "TD/OMS",
+    "name": "Build with TD/OMS",
     "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&FULLPATH')",
     "deployFirst": true,
     "environment": "ile",
