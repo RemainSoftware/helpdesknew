@@ -1,5 +1,5 @@
 **free
 dcl-s response char(10);
-dsply 'Hello Scotia!!' ' ' response;
+dsply 'Hello!!' ' ' response;
 *inlr = *on;
-// some comment 
+// some comment. Hello, there!
