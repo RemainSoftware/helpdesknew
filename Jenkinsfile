@@ -17,6 +17,17 @@ pipeline {
   }
   
   stages {
+    stage('Disable Git SSL verification') {
+      steps {
+        script {
+          if (isUnix()) {
+            sh 'git config --global http.sslVerify false'
+          } else {
+            bat 'git config --global http.sslVerify false'
+          }
+        }
+      }
+    }
     stage('Process changed files') {
       steps {
         script {
