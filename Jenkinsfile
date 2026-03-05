@@ -3,7 +3,7 @@ pipeline {
   
   
   options {
-    // Suppress [Pipeline] step annotations for cleaner logs
+    // Suppress [Pipeline] step annotations for cleaner logs?
     timestamps()
   }
 
