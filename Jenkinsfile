@@ -54,7 +54,7 @@ pipeline {
                 REMOTE_URL=$(git config --get remote.origin.url)
                 AUTH_URL=$(echo "$REMOTE_URL" | sed "s|https://|https://${GIT_USER}:${GIT_PASS}@|")
                 git fetch "$AUTH_URL" master
-                git fetch origin master:origin/master
+                git fetch "$AUTH_URL" master:origin/master
               ''', returnStdout: !params.VERBOSE)
             } else {
               bat(script: '''
@@ -62,7 +62,7 @@ pipeline {
                 for /f "tokens=*" %%i in ('git config --get remote.origin.url') do set REMOTE_URL=%%i
                 set AUTH_URL=%REMOTE_URL:https://=https://%GIT_USER%:%GIT_PASS%@%
                 git fetch "%AUTH_URL%" master
-                git fetch origin master:origin/master
+                git fetch "%AUTH_URL%" master:origin/master
               ''', returnStdout: !params.VERBOSE)
             }
           }
