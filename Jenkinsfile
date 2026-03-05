@@ -171,6 +171,11 @@ pipeline {
             // Send notification to IBM i user
             def summary = "Processed ${successCount}/${changedFiles.size()} files from branch ${currentBranch}"
             ibmiCommand "SNDMSG MSG('${summary}') TOUSR(${params.NOTIFY_USER})"
+
+            // Fail the build if there are errors
+            if (failedFiles && failedFiles.size() > 0) {
+              error("Build failed: ${failedFiles.size()} file(s) failed to process.")
+            }
           }
         }
       }
