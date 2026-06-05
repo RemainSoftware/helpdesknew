@@ -1,12 +1,10 @@
 [
   {
-    "name": "TD/OMS",
-    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&FULLPATH')",
+    "name": "TDOMS",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) ADDTOBQ(*YES) RLSBQ(*DIRECT)",
     "deployFirst": true,
     "environment": "ile",
-    "extensions": [
-      "GLOBAL"
-    ]
+    "extensions": ["GLOBAL"]
   },
   {
     "name": "Create RPGLE Program",
