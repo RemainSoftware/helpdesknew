@@ -20,6 +20,7 @@ pipeline {
         onIBMi(params.IBMI_SERVER) {
           tdOmsPushChanges targetBasePath: params.TARGET_BASE_PATH,
                            compareBranch: params.COMPARE_BRANCH,
+                           gitCredentialsId: '238cb592-6292-4e92-aa9f-2b819ed0c156', // credential ID for the compare-branch fetch fallback
                            library: params.LIBRARY,
                            notifyUser: params.NOTIFY_USER,
                            verbose: params.VERBOSE
