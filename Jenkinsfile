@@ -24,17 +24,16 @@ pipeline {
             def changedFiles = tdOmsChangedFiles compareBranch: params.COMPARE_BRANCH,
                                                  gitCredentialsId: 'bitbucket-eunice-creds',
                                                  logLevel: params.LOG_LEVEL
-            
 
             changedFiles.each { file ->
               if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
-                bldIfsOms targetBasePath: params.TARGET_BASE_PATH,
+                omsPush targetBasePath: params.TARGET_BASE_PATH,
                           relativePath: file.relativePath,
                           branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
                           logLevel: params.LOG_LEVEL
               }
               else {
-                bldIfsOms targetBasePath: params.TARGET_BASE_PATH,
+                omsPush targetBasePath: params.TARGET_BASE_PATH,
                           relativePath: file.relativePath,
                           connectStreamFile: '*YES',
                           branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
@@ -42,7 +41,7 @@ pipeline {
               }
             }
 
-            tdOmsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
+            omsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
                         command: "STROMSDEP BRANCH('\${BRANCH}')",
                         library: params.LIBRARY,
                         notifyUser: params.NOTIFY_USER,
