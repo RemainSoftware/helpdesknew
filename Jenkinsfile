@@ -7,7 +7,7 @@ pipeline {
 
   parameters {
     string(name: 'IBMI_SERVER', defaultValue: 'Plato', description: 'IBM i server profile name configured in Jenkins')
-    string(name: 'TARGET_BASE_PATH', defaultValue: '/QOpenSys/OMSIFS/XMP/GITSRC/DEV/XT0748', description: 'Base IFS path for uploads')
+    string(name: 'TARGET_BASE_PATH', defaultValue: '/tmp/remain/jenkins/upload', description: 'Base IFS path for uploads')
     string(name: 'COMPARE_BRANCH', defaultValue: 'origin/master', description: 'Branch to compare against for changed files')
     string(name: 'LIBRARY', defaultValue: 'V18T0083', description: 'Library to add to library list')
     string(name: 'NOTIFY_USER', defaultValue: 'WIM', description: 'User to notify on completion')
