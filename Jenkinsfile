@@ -24,6 +24,7 @@ pipeline {
             def changedFiles = tdOmsChangedFiles compareBranch: params.COMPARE_BRANCH,
                                                  gitCredentialsId: 'bitbucket-eunice-creds',
                                                  logLevel: params.LOG_LEVEL
+            
 
             changedFiles.each { file ->
               if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
