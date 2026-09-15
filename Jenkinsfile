@@ -7,10 +7,8 @@ pipeline {
 
   parameters {
     string(name: 'IBMI_SERVER', defaultValue: 'Plato', description: 'IBM i server profile name configured in Jenkins')
-    string(name: 'TARGET_BASE_PATH', defaultValue: '/tmp/remain/jenkins/upload', description: 'Base IFS path for uploads')
+    string(name: 'TARGET_PATH', defaultValue: '/tmp/remain/jenkins/upload', description: 'IFS path for uploads')
     string(name: 'COMPARE_BRANCH', defaultValue: 'origin/master', description: 'Branch to compare against for changed files')
-    string(name: 'LIBRARY', defaultValue: 'OMSXMP', description: 'Library to add to library list')
-    string(name: 'NOTIFY_USER', defaultValue: 'WIM', description: 'User to notify on completion')
     choice(name: 'LOG_LEVEL', choices: ['1', '2', '3', '4', '5'], description: 'Minimum TD/OMS log level (1=TRACE, 2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR)')
   }
 
@@ -27,13 +25,13 @@ pipeline {
 
             changedFiles.each { file ->
               if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
-                omsPush targetBasePath: params.TARGET_BASE_PATH,
+                omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
                           branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
                           logLevel: params.LOG_LEVEL
               }
               else {
-                omsPush targetBasePath: params.TARGET_BASE_PATH,
+                omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
                           connectStreamFile: '*YES',
                           branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
@@ -43,8 +41,6 @@ pipeline {
  
             omsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
                         command: "STROMSDEP BRANCH('\${BRANCH}')",
-                        library: params.LIBRARY,
-                        notifyUser: params.NOTIFY_USER,
                         logLevel: params.LOG_LEVEL
           }
         }
