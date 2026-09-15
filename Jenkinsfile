@@ -18,17 +18,14 @@ pipeline {
     stage('Build & Deploy TD/OMS') {
       steps {
         onIBMi(params.IBMI_SERVER) {
-
           ibmiCommand 'CHGENV OMSXMP'
 
           script {
-
             def changedFiles = tdOmsChangedFiles compareBranch: params.COMPARE_BRANCH,
                                                  gitCredentialsId: 'bitbucket-eunice-creds',
                                                  logLevel: params.LOG_LEVEL
 
             changedFiles.each { file ->
-
               if (file.extension.lowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
                 bldIfsOms targetBasePath: params.TARGET_BASE_PATH,
                           relativePath: file.relativePath,
@@ -44,11 +41,12 @@ pipeline {
               }
             }
 
-          tdOmsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
-                      command: "STROMSDEP BRANCH('\${BRANCH}')",
-                      library: params.LIBRARY,
-                      notifyUser: params.NOTIFY_USER,
-                      logLevel: params.LOG_LEVEL
+            tdOmsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
+                        command: "STROMSDEP BRANCH('\${BRANCH}')",
+                        library: params.LIBRARY,
+                        notifyUser: params.NOTIFY_USER,
+                        logLevel: params.LOG_LEVEL
+          }
         }
       }
     }
