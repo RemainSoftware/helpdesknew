@@ -26,7 +26,7 @@ pipeline {
                                                  logLevel: params.LOG_LEVEL
 
             changedFiles.each { file ->
-              if (file.extension.lowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
+              if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
                 bldIfsOms targetBasePath: params.TARGET_BASE_PATH,
                           relativePath: file.relativePath,
                           branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
