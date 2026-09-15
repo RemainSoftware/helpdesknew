@@ -9,7 +9,7 @@ pipeline {
     string(name: 'IBMI_SERVER', defaultValue: 'Plato', description: 'IBM i server profile name configured in Jenkins')
     string(name: 'TARGET_BASE_PATH', defaultValue: '/tmp/remain/jenkins/upload', description: 'Base IFS path for uploads')
     string(name: 'COMPARE_BRANCH', defaultValue: 'origin/master', description: 'Branch to compare against for changed files')
-    string(name: 'LIBRARY', defaultValue: 'V18T0083', description: 'Library to add to library list')
+    string(name: 'LIBRARY', defaultValue: 'OMSXMP', description: 'Library to add to library list')
     string(name: 'NOTIFY_USER', defaultValue: 'WIM', description: 'User to notify on completion')
     choice(name: 'LOG_LEVEL', choices: ['1', '2', '3', '4', '5'], description: 'Minimum TD/OMS log level (1=TRACE, 2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR)')
   }
