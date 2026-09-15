@@ -11,7 +11,7 @@ pipeline {
     string(name: 'COMPARE_BRANCH', defaultValue: 'origin/master', description: 'Branch to compare against for changed files')
     string(name: 'LIBRARY', defaultValue: 'V18T0083', description: 'Library to add to library list')
     string(name: 'NOTIFY_USER', defaultValue: 'WIM', description: 'User to notify on completion')
-    booleanParam(name: 'VERBOSE', defaultValue: true, description: 'Enable verbose logging')
+    choice(name: 'LOG_LEVEL', choices: ['1', '2', '3', '4', '5'], description: 'Minimum TD/OMS log level (1=TRACE, 2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR)')
   }
 
   stages {
@@ -20,21 +20,22 @@ pipeline {
         onIBMi(params.IBMI_SERVER) {
           script {
             def changedFiles = tdOmsChangedFiles compareBranch: params.COMPARE_BRANCH,
-                                                 gitCredentialsId: 'bitbucket-eunice-creds' // credential ID for the compare-branch fetch fallback
+                                                 gitCredentialsId: 'bitbucket-eunice-creds',
+                                                 logLevel: params.LOG_LEVEL
 
             changedFiles.each { file ->
-              echo "Pushing ${file.fileName} (.${file.extension}) at ${file.relativePath}"
-              tdOmsBuildIfsOms targetBasePath: params.TARGET_BASE_PATH,
-                               relativePath: file.relativePath,
-                               notifyUser: params.NOTIFY_USER,
-                               verbose: params.VERBOSE
+              bldIfsOms targetBasePath: params.TARGET_BASE_PATH,
+                        relativePath: file.relativePath,
+                        branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
+                        logLevel: params.LOG_LEVEL
             }
           }
 
           tdOmsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
                       command: "STROMSDEP BRANCH('\${BRANCH}')",
                       library: params.LIBRARY,
-                      notifyUser: params.NOTIFY_USER
+                      notifyUser: params.NOTIFY_USER,
+                      logLevel: params.LOG_LEVEL
         }
       }
     }
