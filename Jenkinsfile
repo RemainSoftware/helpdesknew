@@ -40,7 +40,7 @@ pipeline {
                           logLevel: params.LOG_LEVEL
               }
             }
-
+ 
             omsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
                         command: "STROMSDEP BRANCH('\${BRANCH}')",
                         library: params.LIBRARY,
