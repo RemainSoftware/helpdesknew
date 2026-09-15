@@ -18,15 +18,17 @@ pipeline {
     stage('Build & Deploy TD/OMS') {
       steps {
         onIBMi(params.IBMI_SERVER) {
-          def changedFiles = tdOmsChangedFiles compareBranch: params.COMPARE_BRANCH,
-                                               gitCredentialsId: 'bitbucket-eunice-creds' // credential ID for the compare-branch fetch fallback
+          script {
+            def changedFiles = tdOmsChangedFiles compareBranch: params.COMPARE_BRANCH,
+                                                 gitCredentialsId: 'bitbucket-eunice-creds' // credential ID for the compare-branch fetch fallback
 
-          changedFiles.each { file ->
-            echo "Pushing ${file.fileName} (.${file.extension}) at ${file.relativePath}"
-            tdOmsBuildIfsOms targetBasePath: params.TARGET_BASE_PATH,
-                             relativePath: file.relativePath,
-                             notifyUser: params.NOTIFY_USER,
-                             verbose: params.VERBOSE
+            changedFiles.each { file ->
+              echo "Pushing ${file.fileName} (.${file.extension}) at ${file.relativePath}"
+              tdOmsBuildIfsOms targetBasePath: params.TARGET_BASE_PATH,
+                               relativePath: file.relativePath,
+                               notifyUser: params.NOTIFY_USER,
+                               verbose: params.VERBOSE
+            }
           }
 
           tdOmsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
