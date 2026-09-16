@@ -39,9 +39,7 @@ pipeline {
               }
             }
  
-            omsDeploy branch: env.BRANCH_NAME ?: env.GIT_BRANCH ?: 'XT0748',
-                        command: "STROMSDEP BRANCH('\${BRANCH}')",
-                        logLevel: params.LOG_LEVEL
+            ibmiCommand 'BLDIFSOMS ACTC(*DEPLOY) BRANCH(${BRANCH_NAME})'
           }
         }
       }
