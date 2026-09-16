@@ -29,6 +29,7 @@ pipeline {
                 omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
                           branch: env.BRANCH_NAME ?: env.GIT_BRANCH,
+                          addToBuildQueue: '*YES',
                           logLevel: params.LOG_LEVEL
               }
               else {
