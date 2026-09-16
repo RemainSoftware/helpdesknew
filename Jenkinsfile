@@ -17,6 +17,7 @@ pipeline {
       steps {
         onIBMi(params.IBMI_SERVER) {
           ibmiCommand 'CHGENV OMSXMP'
+          ibmiCommand 'addlible V19T0081'
 
           script {
             def changedFiles = omsChangedFiles compareBranch: params.COMPARE_BRANCH,
@@ -39,7 +40,7 @@ pipeline {
               }
             }
  
-            ibmiCommand 'BLDIFSOMS ACTC(*DEPLOY) BRANCH(${BRANCH_NAME})'
+            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${env.BRANCH_NAME}')"
           }
         }
       }
