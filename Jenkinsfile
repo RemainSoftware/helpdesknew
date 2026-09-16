@@ -39,7 +39,9 @@ pipeline {
                           logLevel: params.LOG_LEVEL
               }
             }
- 
+            
+            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${env.BRANCH_NAME}') RLSBQ(*DIRECT)"
+            
             ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${env.BRANCH_NAME}')"
           }
         }
