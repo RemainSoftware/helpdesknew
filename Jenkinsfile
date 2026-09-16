@@ -41,6 +41,7 @@ pipeline {
               }
             }
             
+            // Release Build Queue
             ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${env.BRANCH_NAME}') RLSBQ(*DIRECT)"
             
             ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${env.BRANCH_NAME}')"
