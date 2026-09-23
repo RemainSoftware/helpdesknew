@@ -2,3 +2,6 @@
 .evfevent
 .env
 .github/agents/**
+.agents/skills/octo--oms-data-dictionary-explorer/SKILL.md
+.agents/skills/octo--oms-database-service/SKILL.md
+.agents/skills/octo--oms-impact-report-catalog/SKILL.md
