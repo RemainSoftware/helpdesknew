@@ -1,0 +1,1 @@
+select * from omobj limit 10;
