@@ -1,4 +1,4 @@
-# Welcome to this repository
+# Welcome to this repository!
 This repository serves as an example on how to manage sources with git and how to connect these sources to TD/OMS. 
 
 
