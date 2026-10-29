@@ -1,0 +1,337 @@
+000000      * ----------------------------------------------------------- *
+000000      * The MIT License (MIT)                                       *
+000000      *                                                             *
+000000      * Copyright (c) 2019 Remain Software                          *
+000000      *                                                             *
+000000      * Permission is hereby granted, free of charge, to any person *
+000000      * obtaining a copy of this software and associated            *
+000000      * documentation files (the "Software"), to deal in the        *
+000000      * Software without restriction, including without limitation  *
+000000      * the rights to use, copy, modify, merge, publish, distribute,*
+000000      * sublicense, and/or sell copies of the Software, and to      *
+000000      * permit persons to whom the Software is furnished to do so,  *
+000000      * subject to the following conditions:   --                   *
+000000      *                                                             *
+000000      * The above copyright notice and this permission notice shall *
+000000      * be included in all copies or substantial portions of the    *
+000000      * Software.                                                   *
+000000      *                                                             *
+000000      * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY   *
+000000      * KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  *
+000000      * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR     *
+000000      * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS  *
+000000      * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR    *
+000000      * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR  *
+000000      * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE   *
+000000      * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.      *
+000000      *                                                             *
+000000      * Contributors:                                               *
+000000      *     Remain Software - initial API and implementation        *
+000000      * ----------------------------------------------------------- *
+000000
+000000
+000000      *$$\CRTOM CRTDSPF
+000000      *$$\ENDOM
+000000     A*%%TS  SD  19981231  134850  THEO        REL-V3R7M0  5716-PW1
+000000     A*%%EC
+000000     A                                      DSPSIZ(24 80 *DS3)
+000000     A                                      REF(*LIBL/OMSREFHD)
+000000     A                                      CHGINPDFT
+000000     A                                      HLPTITLE('Remain Software')
+000000     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+000000     A                                      HELP
+000000     A                                      PRINT(*LIBL/QSYSPRT)
+000000     A                                      ALTHELP(CA01)
+000000     A          R OMH01101                  SFL
+000000     A*%%TS  SD  19970213  105531  JAN         REL-V3R1M0  5763-PW1   xx
+000000     A                                      TEXT('Work with customers')
+000000     A  93                                  SFLNXTCHG
+000000     A            FMOPT1         2A  B 10  2TEXT('Option field')
+000000     A                                      DSPATR(UL)
+000000     A  70                                  DSPATR(RI)
+000000     A  70                                  DSPATR(PC)
+000000     A            FMCUSC    R        O 10  7REFFLD(CUSC)
+000000     A                                      TEXT('Code')
+000000     A            FMNAMS        25A  O 10 20TEXT('Description')
+000000     A            FMNAMC        17A  O 10 48TEXT('Address')
+000000     A            FMTEL#        13A  O 10 68TEXT('Address')
+000000     A          R OMH01102                  SFLCTL(OMH01101)
+000000     A*%%TS  SD  19981231  134850  THEO        REL-V3R7M0  5716-PW1
+000000     A                                      SFLSIZ(0012)
+000000     A                                      SFLPAG(0011)
+000000     A                                      TEXT('Work with customers')
+000000     A                                      CA03
+000000     A                                      CF06
+000000     A                                      CA12
+000000     A                                      CA05
+000000     A                                      CF23(23)
+000000     A  92                                  ROLLUP(22)
+000000     A                                      KEEP
+000000     A                                      OVERLAY
+000000     A                                      HLPCLR
+000000     A                                      SFLCSRRRN(&FMRRN)
+000000     A  90                                  SFLDSP
+000000     A                                      SFLDSPCTL
+000000     A  91                                  SFLCLR
+000000     A N92                                  SFLEND(*MORE)
+000000     A          H                           HLPPNLGRP(OMH01102 OMH011)
+000000     A                                      HLPARA(01 002 01 002)
+000000     A          H                           HLPPNLGRP('OMH01102/FMPOSI' OMH011)
+000000     A                                      HLPARA(05 028 05 037)
+000000     A          H                           HLPPNLGRP('OMH01101/FMOPT1' OMH011)
+000000     A                                      HLPARA(10 002 20 003)
+000000     A          H                           HLPPNLGRP('OMH01102/KEYS' OMH011)
+000000     A                                      HLPARA(23 001 23 080)
+000000     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+000000     A            FMRRN          5S 0H      TEXT('Subfile record under cursor')
+000000     A                                  1  2'OMH011  '
+000000     A            MH01101       50A  O  1 15TEXT('Maintain customers')
+000000     A                                      MSGID(MH0 1101 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A                                  1 72DATE
+000000     A                                      EDTCDE(Y)
+000000     A                                  2  2'OMH01101'
+000000     A            MH01102       50A  O  2 15TEXT('Work with')
+000000     A                                      MSGID(MH0 1102 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A                                  2 72TIME
+000000     A                                  3  2'                                  -
+000000     A                                                                         -
+000000     A                                               '
+000000     A                                      DSPATR(UL)
+000000     A            POS0001       25A  O  5  2TEXT('Position at')
+000000     A                                      MSGID(POS 0001 OMHDSP)
+000000     A            FMPOSI    R        B  5 28REFFLD(CUSC)
+000000     A                                      TEXT('Position at')
+000000     A                                      DSPATR(UL)
+000000     A            MH01105       13A  O  5 40TEXT('Customer code')
+000000     A                                      MSGID(MH0 1105 OMHDSP)
+000000     A            MH01104       70A  O  7  2TEXT('2=Change  3=Copy   4=Delete')
+000000     A  83                                  MSGID(MH0 1104 OMHDSP)
+000000     A                                      MSGID(MH0 1107 OMHDSP)
+000000     A                                      COLOR(BLU)
+000000     A            MH01103       79A  O  9  2TEXT('Subfile header')
+000000     A                                      MSGID(MH0 1103 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A          R OMH01103
+000000     A*%%TS  SD  19960828  174925  JAN         REL-V3R1M0  5763-PW1
+000000     A                                      TEXT('Work with customers')
+000000     A                                      OVERLAY
+000000     A                                 22  2'                                  -
+000000     A                                                                         -
+000000     A                                               '
+000000     A                                      DSPATR(UL)
+000000     A            KEY0073       78   O 23  2TEXT('F3=Exit  F5=Refresh  F6=Add  -
+000000     A                                      F12=Cancel')
+000000     A                                      MSGID(KEY 0073 OMHDSP)
+000000     A                                      COLOR(BLU)
+000000     A          R OMH01104
+000000     A*%%TS  SD  19970128  124207  WIM         REL-V3R1M0  5763-PW1
+000000     A                                      TEXT('Maintain customer')
+000000     A                                      CA03
+000000     A                                      CA12
+000000     A                                      CA05
+000000     A                                      CHANGE(40)
+000000     A                                      OVERLAY
+000000     A                                      KEEP
+000000     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+000000     A                                      HLPCLR
+000000     A          H                           HLPARA(01 002 01 002)
+000000     A                                      HLPPNLGRP('OMH01104' OMH011)
+000000     A          H                           HLPARA(06 028 06 037)
+000000     A                                      HLPPNLGRP('OMH01104/FMCUSC' OMH011)
+000000     A          H                           HLPARA(08 028 08 077)
+000000     A                                      HLPPNLGRP('OMH01104/FMNAMD' OMH011)
+000000     A          H                           HLPARA(09 028 09 077)
+000000     A                                      HLPPNLGRP('OMH01104/FMADST' OMH011)
+000000     A          H                           HLPARA(10 028 10 052)
+000000     A                                      HLPPNLGRP('OMH01104/FMZIPC' OMH011)
+000000     A          H                           HLPARA(11 028 11 077)
+000000     A                                      HLPPNLGRP('OMH01104/FMADRE' OMH011)
+000000     A          H                           HLPARA(12 028 12 077)
+000000     A                                      HLPPNLGRP('OMH01104/FMCOUD' OMH011)
+000000     A          H                           HLPARA(14 028 14 037)
+000000     A                                      HLPPNLGRP('OMH01104/FMUSF1' OMH011)
+000000     A          H                           HLPARA(15 028 15 052)
+000000     A                                      HLPPNLGRP('OMH01104/FMUSF2' OMH011)
+000000     A          H                           HLPARA(16 028 16 042)
+000000     A                                      HLPPNLGRP('OMH01104/FMUSF3' OMH011)
+000000     A          H                           HLPARA(23 001 23 080)
+000000     A                                      HLPPNLGRP('OMH01104/KEYS' OMH011)
+000000     A            FMFMTC        10A  H
+000000     A            FMFLDC        10A  H
+000000     A                                  1  2'OMH011  '
+000000     A            MH01101       50A  O  1 15TEXT('Maintain Library')
+000000     A                                      MSGID(MH0 1101 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A                                  1 72DATE
+000000     A                                      EDTCDE(Y)
+000000     A                                  2  2'OMH01104'
+000000     A            MH01115       50A  O  2 15TEXT('Maintain Customer')
+000000     A                                      MSGID(MH0 1115 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A                                  2 72TIME
+000000     A                                  3  2'                                  -
+000000     A                                                                         -
+000000     A                                               '
+000000     A                                      DSPATR(UL)
+000000     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+000000     A                                      DSPATR(RI)
+000000     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+000000     A                                      DSPATR(RI)
+000000     A  80 81N82  ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+000000     A                                      DSPATR(RI)
+000000     A  80 81 82  ACT0004       10A  O  4  2MSGID(ACT 0004 OMHDSP)
+000000     A                                      DSPATR(RI)
+000000     A            CUS0003       25   O  6  2MSGID(CUS 0003 OMHDSP)
+000000     A            FMCUSC    R        B  6 28REFFLD(CUSC)
+000000     A                                      TEXT('Code')
+000000     A  80
+000000     AO 81                                  DSPATR(HI)
+000000     A  80
+000000     AO 81                                  DSPATR(PR)
+000000     A N80N81N82                            DSPATR(UL)
+000000     A  72                                  DSPATR(RI)
+000000     A  72                                  DSPATR(PC)
+000000     A            NAM0002       25   O  8  2TEXT('Name')
+000000     A                                      MSGID(NAM 0002 OMHDSP)
+000000     A            FMNAMD    R        B  8 28REFFLD(NAMD)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A  73                                  DSPATR(RI)
+000000     A  73                                  DSPATR(PC)
+000000     A                                      TEXT('Name')
+000000     A                                      CHECK(LC)
+000000     A            STR0002       25   O  9  2TEXT('Street')
+000000     A                                      MSGID(STR 0002 OMHDSP)
+000000     A            FMADST    R     N  B  9 28REFFLD(ADST)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A                                      CHECK(LC)
+000000     A                                      TEXT('Street')
+000000     A            POS0005       25   O 10  2MSGID(POS 0005 OMHDSP)
+000000     A            FMZIPC    R     N  B 10 28REFFLD(ZIPC)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A                                      TEXT('Zipcode')
+000000     A            RES0002       25   O 11  2TEXT('Residence')
+000000     A                                      MSGID(RES 0002 OMHDSP)
+000000     A            FMADRE    R     N  B 11 28REFFLD(ADRE)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A                                      CHECK(LC)
+000000     A                                      TEXT('Residence')
+000000     A            COU0002       25   O 12  2TEXT('Country')
+000000     A                                      MSGID(COU 0002 OMHDSP)
+000000     A            FMCOUD    R     N  B 12 28REFFLD(COUD)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A                                      CHECK(LC)
+000000     A                                      TEXT('Country')
+000000     A            MH01112       25A  O 14  2TEXT('User fld 1')
+000000     A                                      MSGID(MH0 1112 OMHDSP)
+000000     A            FMUSF1    R        B 14 28REFFLD(USF1)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A                                      CHECK(LC)
+000000     A  74                                  DSPATR(RI)
+000000     A  74                                  DSPATR(PC)
+000000     A            MH01113       25A  O 15  2TEXT('User fld 2')
+000000     A                                      MSGID(MH0 1113 OMHDSP)
+000000     A            FMUSF2    R        B 15 28REFFLD(USF2)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A                                      CHECK(LC)
+000000     A  75                                  DSPATR(RI)
+000000     A  75                                  DSPATR(PC)
+000000     A            MH01114       25A  O 16  2TEXT('User fld 3')
+000000     A                                      MSGID(MH0 1114 OMHDSP)
+000000     A            FMUSF3    R        B 16 28REFFLD(USF3)
+000000     A  80 81                               DSPATR(HI)
+000000     A  80 81                               DSPATR(PR)
+000000     A N81                                  DSPATR(UL)
+000000     A  76                                  DSPATR(RI)
+000000     A  76                                  DSPATR(PC)
+000000     A                                 22  2'                                  -
+000000     A                                                                         -
+000000     A                                               '
+000000     A                                      DSPATR(UL)
+000000     A  80 81     KEY0066       78A  O 23  2TEXT('F3=Exit ...')
+000000     A                                      MSGID(KEY 0066 OMHDSP)
+000000     A                                      COLOR(BLU)
+000000     A N80
+000000     AON81        KEY0065       78A  O 23  2TEXT('F3=Exit ...')
+000000     A                                      MSGID(KEY 0065 OMHDSP)
+000000     A                                      COLOR(BLU)
+000000     A          R OMH01105
+000000     A*%%TS  SD  19970128  124207  WIM         REL-V3R1M0  5763-PW1
+000000     A                                      TEXT('Work with customers -
+000000     A                                      no records')
+000000     A                                      CA03
+000000     A                                      CF06
+000000     A                                      CA12
+000000     A                                      CA05
+000000     A                                      CF23
+000000     A  92                                  ROLLUP(22)
+000000     A                                      OVERLAY
+000000     A                                      KEEP
+000000     A                                      HLPCLR
+000000     A          H                           HLPARA(01 002 01 002)
+000000     A                                      HLPPNLGRP('OMH01105' OMH011)
+000000     A          H                           HLPARA(05 028 05 037)
+000000     A                                      HLPPNLGRP('OMH01105/FMPOSI' OMH011)
+000000     A          H                           HLPARA(23 001 23 080)
+000000     A                                      HLPPNLGRP('OMH01105/KEYS' OMH011)
+000000     A                                  1  2'OMH011  '
+000000     A            MH01101       50A  O  1 16TEXT('Maintain customers')
+000000     A                                      MSGID(MH0 1101 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A                                  1 72DATE
+000000     A                                      EDTCDE(Y)
+000000     A                                  2  2'OMH01101'
+000000     A            MH01102       50A  O  2 16TEXT('Work with')
+000000     A                                      MSGID(MH0 1102 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A                                  2 72TIME
+000000     A                                  3  2'                                  -
+000000     A                                                                         -
+000000     A                                               '
+000000     A                                      DSPATR(UL)
+000000     A            POS0001       25A  O  5  2TEXT('Position at')
+000000     A                                      MSGID(POS 0001 OMHDSP)
+000000     A            FMPOSI    R        B  5 28REFFLD(CUSC)
+000000     A                                      TEXT('Position at')
+000000     A                                      DSPATR(UL)
+000000     A            MH01103       79A  O  9  2TEXT('Subfile header')
+000000     A                                      MSGID(MH0 1103 OMHDSP)
+000000     A                                      DSPATR(HI)
+000000     A            MH01104       70A  O  7  2TEXT('2=Change  3=Copy   4=Delete')
+000000     A  83                                  MSGID(MH0 1104 OMHDSP)
+000000     A                                      MSGID(MH0 1107 OMHDSP)
+000000     A                                      COLOR(BLU)
+000000     A            MH01105       13A  O  5 40TEXT('Customer code')
+000000     A                                      MSGID(MH0 1105 OMHDSP)
+000000     A            MH01106       25A  O 11  4TEXT('No customers')
+000000     A                                      MSGID(MH0 1106 OMHDSP)
+000000     A          R MSGSFL                    SFL
+000000     A                                      SFLMSGRCD(24)
+000000     A            MSGKEY                    SFLMSGKEY
+000000     A            PGMQ                      SFLPGMQ
+000000     A
+000000     A          R MSGCTL                    SFLCTL(MSGSFL)
+000000     A                                      SFLINZ
+000000     A                                      SFLSIZ(2)
+000000     A                                      SFLPAG(1)
+000000     A                                      SFLDSP
+000000     A                                      SFLDSPCTL
+000000     A N91                                  SFLEND
+000000     A                                      OVERLAY
+000000     A            PGMQ                      SFLPGMQ
+000000     A
