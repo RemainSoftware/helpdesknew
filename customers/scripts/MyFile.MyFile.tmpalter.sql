@@ -1,0 +1,1 @@
+select * from omsrun51/omapp;
