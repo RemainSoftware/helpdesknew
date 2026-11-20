@@ -753,6 +753,7 @@
       *          ------------------------------------------
       *          If option is valid, then check the number of valid
       *          codes. *IN93 is the subfile next change indicator
+      *          codes. *IN93 is the subfile next change indicator
       *          ------------------------------------------
      C                   IF        FMOPT1 = ' 2'                                B04
      C                             OR FMOPT1 = ' 4'
