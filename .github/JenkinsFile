@@ -30,26 +30,26 @@ pipeline {
 
             changedFiles.each { file ->
               if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
-                omsPush targetPath: env.TARGET_PATH,
+                omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
-                          branch: env.CHANGE_BRANCH,
+                          branch: env.CHANGE_TARGET,
                           addToBuildQueue: '*YES',
                           logLevel: params.LOG_LEVEL
               }
               else {
-                omsPush targetPath: env.TARGET_PATH,
+                omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
                           connectStreamFile: '*YES',
-                          branch: env.CHANGE_BRANCH,
+                          branch: env.CHANGE_TARGET,
                           logLevel: params.LOG_LEVEL
               }
             }
             
             // Release Build Queue
-            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${params.CHANGE_BRANCH}') RLSBQ(*DIRECT)"
+            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${params.CHANGE_TARGET}') RLSBQ(*DIRECT)"
             
             // Deploy
-            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${params.CHANGE_BRANCH}')"
+            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${params.CHANGE_TARGET}')"
           }
         }
       }
