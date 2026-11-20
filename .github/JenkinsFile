@@ -1,0 +1,64 @@
+//
+// This build uses the Multibranch Pipeline Parameterization plugin
+//
+// The following parameters are defined in the job
+//
+// ENVIRONMENT - Internal Remain Environment 
+// IBMI_SERVER - The server to use
+// CREDENTIALS_ID - The (Github) credentials to use
+// LOG_LEVEL - The log level (1 (max) to 5 (min))
+// TARGET_PATH - The IBM i target path to upload to e.g. /tmp/remain/jenkins
+//
+
+pipeline {
+  agent any
+
+  options {
+    timestamps()
+  }
+
+  stages {
+    stage('Build & Deploy TD/OMS') {
+      steps {
+        onIBMi(params.IBMI_SERVER) {
+          ibmiCommand "CHGENV ${params.ENVIRONMENT}"
+
+          script {
+            def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME
+            if (!branch?.trim()) {
+              error 'Cannot determine the TD/OMS source branch from CHANGE_BRANCH or BRANCH_NAME'
+            }
+            def compareBranch = "origin/${env.CHANGE_TARGET ?: 'master'}"
+            def changedFiles = omsChangedFiles compareBranch: compareBranch,
+                                                 gitCredentialsId: params.CREDENTIALS_ID,
+                                                 logLevel: params.LOG_LEVEL
+
+            changedFiles.each { file ->
+              if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
+                omsPush targetPath: params.TARGET_PATH,
+                          relativePath: file.relativePath,
+                          branch: branch,
+                          addToBuildQueue: '*YES',
+                          logLevel: params.LOG_LEVEL
+              }
+              else {
+                omsPush targetPath: params.TARGET_PATH,
+                          relativePath: file.relativePath,
+                          connectStreamFile: '*YES',
+                          branch: branch,
+                          logLevel: params.LOG_LEVEL
+              }
+            }
+            
+            // Release Build Queue
+            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${branch}') RLSBQ(*DIRECT)"
+            
+            // Deploy
+            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${branch}')"
+          }
+        }
+      }
+    }
+  }
+}
+

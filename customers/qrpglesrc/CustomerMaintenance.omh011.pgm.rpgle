@@ -760,6 +760,7 @@
      C                             OR FMOPT1 = ' 7'
      C                             OR FMOPT1 = ' 8'
      C                             OR FMOPT1 = '12'
+     C                             OR FMOPT1 = '22'
       *
       *          ------------------------------------------
       *          Option is valid
