@@ -5,7 +5,7 @@ This repository serves as an example on how to manage sources with git and how t
 
 # TD/OMS CI/CD Workflow for Git Managed Projects
 
-THIS IS NOT THE OFFICIAL DOCUMENTATION AND MAY BE STALE. PLEASE FIND BLDIFSOMS AND GIT [ON THE OFFICIAL DOCUMENTATION PAGES.](https://remainsoftware.com/wiki)
+THIS IS NOT THE OFFICIAL DOCUMENTATION AND MAY BE STALE. PLEASE FIND BLDIFSOMS AND GIT [ON THE OFFICIAL DOCUMENTATION PAGES.](https://remainsoftware.com/extranet) (login required)
 
 
 This document describes the TD/OMS-based CI/CD workflow used for the IBM i backend source repository in this workspace. It combines:
