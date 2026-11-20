@@ -1,0 +1,59 @@
+//
+// This build uses the Multibranch Pipeline Parameterization plugin
+//
+// The following parameters are defined in the job
+//
+// ENVIRONMENT - Internal Remain Environment 
+// IBMI_SERVER - The server to use
+// CREDENTIALS_ID - The (Github) credentials to use
+// LOG_LEVEL - The log level (1 (max) to 5 (min))
+// TARGET_PATH - The IBM i target path to upload to e.g. /tmp/remain/jenkins
+//
+
+pipeline {
+  agent any
+
+  options {
+    timestamps()
+  }
+
+  stages {
+    stage('Build & Deploy TD/OMS') {
+      steps {
+        onIBMi(env.IBMI_SERVER) {
+          ibmiCommand 'CHGENV ${env.ENVIRONMENT}'
+
+          script {
+            def changedFiles = omsChangedFiles compareBranch: env.CHANGE_TARGET,
+                                                 gitCredentialsId: env.CREDENTIALS_ID,
+                                                 logLevel: env.LOG_LEVEL
+
+            changedFiles.each { file ->
+              if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
+                omsPush targetPath: env.TARGET_PATH,
+                          relativePath: file.relativePath,
+                          branch: env.CHANGE_BRANCH,
+                          addToBuildQueue: '*YES',
+                          logLevel: env.LOG_LEVEL
+              }
+              else {
+                omsPush targetPath: env.TARGET_PATH,
+                          relativePath: file.relativePath,
+                          connectStreamFile: '*YES',
+                          branch: env.CHANGE_BRANCH,
+                          logLevel: env.LOG_LEVEL
+              }
+            }
+            
+            // Release Build Queue
+            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${env.CHANGE_BRANCH}') RLSBQ(*DIRECT)"
+            
+            // Deploy
+            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${env.CHANGE_BRANCH}')"
+          }
+        }
+      }
+    }
+  }
+}
+
