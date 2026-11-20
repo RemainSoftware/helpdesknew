@@ -20,13 +20,13 @@ pipeline {
   stages {
     stage('Build & Deploy TD/OMS') {
       steps {
-        onIBMi(env.IBMI_SERVER) {
-          ibmiCommand 'CHGENV ${env.ENVIRONMENT}'
+        onIBMi(params.IBMI_SERVER) {
+          ibmiCommand "CHGENV ${params.ENVIRONMENT}"
 
           script {
             def changedFiles = omsChangedFiles compareBranch: env.CHANGE_TARGET,
-                                                 gitCredentialsId: env.CREDENTIALS_ID,
-                                                 logLevel: env.LOG_LEVEL
+                                                 gitCredentialsId: params.CREDENTIALS_ID,
+                                                 logLevel: params.LOG_LEVEL
 
             changedFiles.each { file ->
               if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
@@ -34,22 +34,22 @@ pipeline {
                           relativePath: file.relativePath,
                           branch: env.CHANGE_BRANCH,
                           addToBuildQueue: '*YES',
-                          logLevel: env.LOG_LEVEL
+                          logLevel: params.LOG_LEVEL
               }
               else {
                 omsPush targetPath: env.TARGET_PATH,
                           relativePath: file.relativePath,
                           connectStreamFile: '*YES',
                           branch: env.CHANGE_BRANCH,
-                          logLevel: env.LOG_LEVEL
+                          logLevel: params.LOG_LEVEL
               }
             }
             
             // Release Build Queue
-            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${env.CHANGE_BRANCH}') RLSBQ(*DIRECT)"
+            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${params.CHANGE_BRANCH}') RLSBQ(*DIRECT)"
             
             // Deploy
-            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${env.CHANGE_BRANCH}')"
+            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${params.CHANGE_BRANCH}')"
           }
         }
       }
