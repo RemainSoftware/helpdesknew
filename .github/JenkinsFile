@@ -24,7 +24,12 @@ pipeline {
           ibmiCommand "CHGENV ${params.ENVIRONMENT}"
 
           script {
-            def changedFiles = omsChangedFiles compareBranch: env.CHANGE_TARGET,
+            def branch = env.CHANGE_BRANCH ?: env.BRANCH_NAME
+            if (!branch?.trim()) {
+              error 'Cannot determine the TD/OMS source branch from CHANGE_BRANCH or BRANCH_NAME'
+            }
+            def compareBranch = "origin/${env.CHANGE_TARGET ?: 'master'}"
+            def changedFiles = omsChangedFiles compareBranch: compareBranch,
                                                  gitCredentialsId: params.CREDENTIALS_ID,
                                                  logLevel: params.LOG_LEVEL
 
@@ -32,7 +37,7 @@ pipeline {
               if (file.extension.toLowerCase() in ['rpgle', 'clle', 'sqlrpgle', 'dspf']) {
                 omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
-                          branch: env.CHANGE_TARGET,
+                          branch: branch,
                           addToBuildQueue: '*YES',
                           logLevel: params.LOG_LEVEL
               }
@@ -40,16 +45,16 @@ pipeline {
                 omsPush targetPath: params.TARGET_PATH,
                           relativePath: file.relativePath,
                           connectStreamFile: '*YES',
-                          branch: env.CHANGE_TARGET,
+                          branch: branch,
                           logLevel: params.LOG_LEVEL
               }
             }
             
             // Release Build Queue
-            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${params.CHANGE_TARGET}') RLSBQ(*DIRECT)"
+            ibmiCommand "BLDIFSOMS ACTC(*RLSBQ) BRANCH('${branch.replace("'", "''")}') RLSBQ(*DIRECT)"
             
             // Deploy
-            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${params.CHANGE_TARGET}')"
+            ibmiCommand "BLDIFSOMS ACTC(*DEPLOY) BRANCH('${branch.replace("'", "''")}')"
           }
         }
       }
