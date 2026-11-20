@@ -1,17 +1,5 @@
 [
   {
-    "name": "Attach and Build (td/oms)",
-    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES)",
-    "deployFirst": true,
-    "environment": "ile",
-    "extensions": [
-      "GLOBAL"
-    ],
-    "type": "file",
-    "refresh": "no",
-    "runOnProtected": false
-  },
-  {
     "name": "Attach include files (td/oms)",
     "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) CONOBJ(*NO) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES)",
     "deployFirst": true,
@@ -25,12 +13,74 @@
   },
   {
     "name": "Attach scripts (td/oms)",
-    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) CONOBJ(*NO) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES)",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) CONOBJ(*NO) ADDTOBQ(*NO) RLSBQ(*DIRECT) CONSTMF(*YES)",
     "deployFirst": true,
     "environment": "ile",
     "extensions": [
       "REXX",
+      "XML",
       "QSH"
+    ],
+    "type": "file",
+    "refresh": "no",
+    "runOnProtected": false
+  },
+  {
+    "name": "Objects with Sourcefile (td/oms)",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) CONOBJ(*YES) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*NO) CPYTOSRCF(*YES)",
+    "deployFirst": true,
+    "environment": "ile",
+    "extensions": [
+      "DSPF",
+      "PRTF"
+    ],
+    "type": "file",
+    "refresh": "no",
+    "runOnProtected": false
+  },
+  {
+    "name": "Virtual SQL (td/oms)",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) CONOBJ(*VIRTUAL) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES)",
+    "deployFirst": true,
+    "environment": "ile",
+    "extensions": [
+      "SQL"
+    ],
+    "type": "file",
+    "refresh": "no",
+    "runOnProtected": false
+  },
+  {
+    "name": "Attach and Build + SourceFile (td/oms)",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES) CPYTOSRCF(*YES)",
+    "deployFirst": true,
+    "environment": "ile",
+    "extensions": [
+      "GLOBAL"
+    ],
+    "type": "file",
+    "refresh": "no",
+    "runOnProtected": false
+  },
+  {
+    "name": "Attach and Build (td/oms)",
+    "command": "BLDIFSOMS ACTC(*PUSH) BRANCH('&BRANCH') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES)",
+    "deployFirst": true,
+    "environment": "ile",
+    "extensions": [
+      "GLOBAL"
+    ],
+    "type": "file",
+    "refresh": "no",
+    "runOnProtected": false
+  },
+  {
+    "name": "Attach and Build to Application (td/oms)",
+    "command": "BLDIFSOMS ACTC(*PUSH) APPC('&TDOMS_APPLICATION') TASK('&TDOMS_TASK') STMF('&RELATIVEPATH') DIR('&WORKDIR') CCSID(1208) ADDTOBQ(*YES) RLSBQ(*DIRECT) CONSTMF(*YES)",
+    "deployFirst": true,
+    "environment": "ile",
+    "extensions": [
+      "GLOBAL"
     ],
     "type": "file",
     "refresh": "no",

@@ -35,7 +35,7 @@
       * Description                                                 *
       * ----------------------------------------------------------- *
       *                                                             *
-      * File .......: OMCUS                                         *
+      * File .......: OMCCO                                         *
       * Function ...: Customers                                     *
       * Author .....: Remain Software                               *
       *                                                             *
@@ -49,19 +49,21 @@
                                             REF(OMSREFHD)
 
       * ------------------------------------------------------------ *
-      * Record OMCUSR
+      * Record OMCCOR
       * ------------------------------------------------------------ *
-                R OMCUSR
+                R OMCCOR
 
       * ------------------------------------------------------------ *
       * Field descriptions
       * ------------------------------------------------------------ *
-                  USCUSC    R               REFFLD(CUSC)
-                  USNAMD    R               REFFLD(NAMD)
-                  USADST    R               REFFLD(ADST)
-                  USZIPC    R               REFFLD(ZIPC)
-                  USADRE    R               REFFLD(ADRE)
-                  USCOUD    R               REFFLD(COUD)
-                  USUSF1    R               REFFLD(USF1)
-                  USUSF2    R               REFFLD(USF2)
-                  USUSF3    R               REFFLD(USF3)
+                  COCUSC    R               REFFLD(CUSC)
+                  COCCTC    R               REFFLD(CCTC)
+                  COCNTI    R               REFFLD(CNTI)
+                  COTITL    R               REFFLD(TITL)
+                  CONAMD    R               REFFLD(NAMD)
+                  COTEL#    R               REFFLD(TEL#)
+                  COEMAC    R               REFFLD(EMAC)
+                  COCFL#    R               REFFLD(CFL#)
+                  COUSF1    R               REFFLD(USF1)
+                  COUSF2    R               REFFLD(USF2)
+                  COUSF3    R               REFFLD(USF3) 
